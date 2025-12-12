@@ -128,7 +128,7 @@ docker compose up --build
 Отправка работы:
 
 ```bash
-curl -F "student_id=<student_id>" -F "assignment_id=<assignment_id>" -F "file=<file_path" http://localhost:8000/works
+curl -F "student_id=<student_id>" -F "assignment_id=<assignment_id>" -F "file=@file_path" http://localhost:8000/works
 ```
 
 Получить отчёты по работе:

@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  gateway:
+    build: ./services/gateway
+    environment:
+      - PORT=8000
+      - DATA_DIR=/data
+      - FILE_SERVICE_URL=http://file-service:8001
+      - ANALYSIS_SERVICE_URL=http://analysis-service:8002
+    volumes:
+      - gateway_data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - file-service
+      - analysis-service
+
+  file-service:
+    build: ./services/file_service
+    environment:
+      - PORT=8001
+      - DATA_DIR=/data
+      - FILES_DIR=/data/files
+    volumes:
+      - file_data:/data
+    ports:
+      - "8001:8001"
+
+  analysis-service:
+    build: ./services/analysis_service
+    environment:
+      - PORT=8002
+      - DATA_DIR=/data
+      - REPORTS_DIR=/data/reports
+      - FILE_SERVICE_URL=http://file-service:8001
+    volumes:
+      - analysis_data:/data
+    ports:
+      - "8002:8002"
+    depends_on:
+      - file-service
+
+volumes:
+  gateway_data:
+  file_data:
+  analysis_data:

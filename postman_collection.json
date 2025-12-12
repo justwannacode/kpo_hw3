@@ -1,0 +1,109 @@
+{
+  "info": {
+    "name": "KPO HW3 (Gateway)",
+    "_postman_id": "b5e2a313-8de5-4b9b-9e34-3d9f722b98dd",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Submit work (POST /works)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "student_id",
+              "value": "s123",
+              "type": "text"
+            },
+            {
+              "key": "assignment_id",
+              "value": "hw3",
+              "type": "text"
+            },
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8000/works",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "works"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get work (GET /works/:work_id)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/works/{{work_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "works",
+            "{{work_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get reports for work (GET /works/:work_id/reports)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/works/{{work_id}}/reports",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "works",
+            "{{work_id}}",
+            "reports"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Retry analysis (POST /works/:work_id/retry-analysis)",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8000/works/{{work_id}}/retry-analysis",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "works",
+            "{{work_id}}",
+            "retry-analysis"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "work_id",
+      "value": ""
+    }
+  ]
+}
